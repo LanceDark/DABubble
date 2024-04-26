@@ -1,0 +1,50 @@
+<div class="main-content">
+    <div class="overlay" *ngIf="globalVariables.showContacts">
+        <div class="headline">
+            <div>
+                <span class="top"> Personen hinzufügen</span>
+
+                <div>
+                    <span class="title">#{{ globalVariables.openChannel.titel }}</span>
+                </div>
+            </div>
+            <div>
+                <img (click)="globalFunctions.closeAddContactsOverlay()" src="assets/img/icons/close.svg"
+                    class="close-btn" alt="close profile" />
+            </div>
+        </div>
+        <div class="content">
+            <div class="listContainer">
+                <ul class="listContainerInner" >
+                    <li class="liInfoTxt" *ngIf="selectedUsers.length === 0">Noch kein User ausgewählt!</li>
+                    <li class="selectedListElement" *ngFor="let user of selectedUsers, let i = index">
+                        <div class="selectedListElementInner">
+                            <img class="user-img" [src]="user.img" alt="" />
+                            <span>{{ user.name }}</span>
+                        </div>
+                        <img (click)="deleteUserFromSelect(i)" src="assets/img/icons/close.svg" class="close-btn"
+                            alt="close profile" />
+                    </li>
+                </ul>
+            </div>
+            <app-inputfield [(ngModel)]="selectedUserName" [classes]="['standard']" type="search"
+                placeholder="Mitglieder suchen" (inputChange)="onSearchChange($event)"></app-inputfield>
+
+            <div class="listContainer">
+                <ul class="listContainerInner">
+                    <li class="liInfoTxt" *ngIf="users.length === 0">Kein User verfügbar!</li>
+                    <li class="unselectedListElement" *ngFor="let user of users" (click)="selectUser(user)">
+                        <img [src]="user.img" alt="userImage" class="user-img" />
+                        <span>{{ user.name }}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="add">
+            <div class="button-area">
+                <app-button [classes]="['noIcon primary']" (click)="addUsersToExistingChannel()" caption="Hinzufügen"
+                    imgPath=""></app-button>
+            </div>
+        </div>
+    </div>
+</div>

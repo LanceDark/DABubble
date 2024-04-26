@@ -1,0 +1,18 @@
+<section class="dashboard"  *ngIf="globalVariables.openChannel.titel != ''">
+    <div class="menu-toggle-btn" *ngIf="globalVariables.desktop800" (click)="toggleChannelMenu()">
+        <span>{{ globalVariables.isMenuOpen ? 'Workspace-Menu öffnen' : 'Workspace-Menu schließen' }}</span>
+    </div>
+    <div class="app-container">
+        <div class="channel-menu" *ngIf="globalVariables.showChannelMenu">
+            <app-channel-menu></app-channel-menu>
+        </div>
+
+        <div class="chat-content" *ngIf="globalVariables.isChatVisable"> 
+            <app-chat *ngIf="globalVariables.isChatVisable"></app-chat>    
+        </div>
+
+        <div class="thread-content" *ngIf="globalVariables.showThread">
+            <app-thread></app-thread>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,108 @@
+@import './../../styles.scss';
+.splash-screen {
+    background: linear-gradient(1.46deg, #313AE6 1.22%, #797EF3 98.76%);
+    @include dFlex();
+    z-index: 5;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.animate-move-to-top-left {
+    position: absolute;
+    top: 50px;
+    left: 75px;
+    z-index: 10;
+    @include dFlex($g: 10px);
+    .logo {
+        height: 56px;
+    }
+}
+
+.text-container {
+    overflow: hidden;
+    width: 200px;
+}
+
+.loginheader {
+    height: 135px;
+}
+
+.login-header-left {
+    position: absolute;
+    top: 50px;
+    left: 75px;
+    @include dFlex();
+    gap: 10px;
+    h1 {
+        font-weight: 800;
+    }
+}
+
+.login-header-right {
+    position: absolute;
+    top: 50px;
+    right: 75px;
+    @include dFlex($ai: flex-end, $fd: column);
+    gap: 10px;
+    span {
+        font-weight: 600;
+        padding: 0 25px;
+    }
+}
+
+@media (max-width: 800px) {
+    .login-header-left {
+        position: absolute;
+        top: 20px;
+        display: flex;
+        align-items: center;
+        left: 0;
+        right: 0;
+    }
+    .login-header-right {
+        position: absolute;
+        top: unset;
+        bottom: 55px;
+        display: flex;
+        align-items: center;
+        left: 0;
+        right: 0;
+        gap: 0;
+    }
+}
+
+@media (max-height:790px) {
+    .loginheader {
+        height: 100px;
+    }
+}
+
+@media (max-height:730px) {
+    .loginheader {
+        height: 85px;
+    }
+    .login-header-left {
+        position: absolute;
+        top: 15px;
+        display: flex;
+        align-items: center;
+        left: 0;
+        right: 0;
+        img {
+            height: 50px;
+        }
+    }
+    .login-header-right {
+        position: absolute;
+        top: unset;
+        bottom: 44px;
+        display: flex;
+        align-items: center;
+        left: 0;
+        right: 0;
+        gap: 0;
+    }
+}

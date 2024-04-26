@@ -1,0 +1,206 @@
+@import './../../../../styles.scss';
+.overlay {
+    background-color: white;
+    z-index: 3;
+    height: 100vh;
+    width: 100%;
+}
+
+@media screen and (min-width: 800px) {
+    .overlay {
+        background-color: white;
+        z-index: 3;
+        max-width: 60%;
+        height: fit-content;
+        border-radius: 0px 30px 30px 30px;
+        width: 100%;
+    }
+}
+
+.edit-Content {
+    box-shadow: 0px 2px 10px 0px #00000014;
+}
+
+.channelName {
+    font-weight: 700;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+.edited-field {
+    margin-top: 16px;
+    margin-left: 32px;
+    display: block;
+    word-wrap: break-word;
+}
+
+.desc-area {
+    max-width: 100%;
+    margin-bottom: 12px;
+}
+
+.channel {
+    margin-left: 32px;
+}
+
+.channel-name-display {
+    margin-left: 32px;
+    margin-top: 20px;
+}
+
+.description {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.editName-area {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    height: 100px;
+    border: 1px solid #ADB0D9;
+    border-radius: 20px;
+    margin-bottom: 50px;
+    margin-top: 30px;
+}
+
+.description-edited {
+    margin-left: 32px !important;
+    max-width: 100%;
+    align-items: center;
+    max-height: 54vh;
+}
+
+.no-border {
+    border: none !important;
+}
+
+.editDescription-area {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    border: 1px solid #ADB0D9;
+    border-radius: 20px;
+    margin: 30px 0;
+    font-size: 18px;
+    width: 100%;
+}
+
+.edit-btn {
+    color: #797ef3;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.publisher {
+    color: #797ef3;
+    font-size: 18px;
+    margin-top: 8px;
+}
+
+.line {
+    width: 80%;
+    height: 1px;
+    border-radius: 20px;
+    background-color: #aDB0D9;
+    margin-left: 32px;
+}
+
+@media screen and (min-width: 800px) {
+    .line {
+        width: 90%;
+    }
+}
+
+.first-row {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 32px;
+    margin-right: 32px;
+}
+
+.second-row {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 32px;
+    margin-right: 32px;
+    margin-top: 24px;
+}
+
+.Edit-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #0003;
+    z-index: 2;
+}
+
+.close-btn {
+    cursor: pointer;
+}
+
+.headline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    box-shadow: 0px 2px 10px 0px #00000014;
+    div {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.edit-chan-content {
+    padding: 0 40px 40px 40px;
+}
+
+.top {
+    font-weight: 700;
+    font-size: 28px;
+}
+
+.about {
+    width: 100%;
+}
+
+.text {
+    font-weight: 400;
+    font-size: 16px;
+    text-align: left;
+}
+
+.button-area {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    gap: 25px;
+    .button-area-left{
+        @include dFlex($g:25px);
+    }
+}
+
+.editName-area {
+    display: flex;
+    justify-content: center;
+}
+
+.creator {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 30px;
+}
+
+.from {
+    font-size: 18px;
+    font-weight: bold;
+}

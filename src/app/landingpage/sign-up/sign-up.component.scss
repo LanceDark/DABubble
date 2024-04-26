@@ -1,0 +1,320 @@
+@import './../../../styles.scss';
+app-inputfield,
+app-button {
+    width: 100%;
+    @include dFlex($jc: flex-start);
+}
+
+app-button {
+    justify-content: flex-end;
+}
+
+section {
+    @include dFlex($fd: column, $g: 30px);
+    margin: 80px 20px;
+    width: 82%;
+    padding: 0 50px;
+}
+
+header {
+    @include dFlex($jc: flex-start);
+    width: 100%;
+}
+
+.headline {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.headline-wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h2 {
+    font-size: 46px;
+    color: $purple1;
+    margin: 0;
+    width: fit-content;
+}
+
+h3 {
+    font-size: 30px;
+    margin: 0;
+}
+
+.avatar-hint {
+    display: flex;
+    width: 100%;
+}
+
+.input-fields {
+    @include dFlex($fd: column);
+    width: 100%;
+    gap: 10px;
+    p {
+        color: $purple2;
+        font-size: 18px;
+    }
+}
+
+.button-field {
+    display: flex;
+    width: 100%;
+    gap: 30px;
+}
+
+form {
+    @include dFlex($fd: column, $ai: flex-start);
+    width: 100%;
+    gap: 30px;
+}
+
+.info {
+    display: flex;
+    text-align: center;
+    font-size: 20px;
+    max-width: 500px;
+}
+
+.contact-checkbox {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start !important;
+    div {
+        display: flex;
+    }
+}
+
+.custom-checkbox {
+    input {
+        display: none;
+        &:checked~.checkmark:after {
+            display: block;
+        }
+    }
+    .checkmark {
+        position: relative;
+        height: 15px;
+        width: 15px;
+        display: inline-block;
+        margin-right: 10px;
+        border: 2px solid $purple2;
+        border-radius: 3px;
+        cursor: pointer;
+        &:after {
+            content: "";
+            position: absolute;
+            display: none;
+            left: 4px;
+            top: -1px;
+            width: 5px;
+            height: 10px;
+            border: 1px solid $purple2;
+            border-width: 0 3px 3px 0;
+            transform: rotate(45deg);
+        }
+    }
+}
+
+label {
+    a {
+        border-radius: 30px;
+        cursor: pointer;
+        color: $purple2;
+        &:hover {
+            background-color: $background;
+        }
+    }
+}
+
+.avatar-img {
+    border-radius: 100%;
+    background: $purple2;
+    height: 160px;
+    display: flex;
+    width: 160px;
+    justify-content: center;
+    align-items: center;
+}
+
+.small {
+    border-radius: 100%;
+    height: 160px;
+    width: 160px;
+}
+
+.avatar-list {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 15px;
+    .avatar-pic {
+        border-radius: 100%;
+        height: 60px;
+        border: 5px solid white;
+        cursor: pointer;
+        &:hover {
+            border: 5px solid $background;
+        }
+    }
+}
+
+.hint {
+    height: 20px;
+    font-size: 1rem;
+    color: #E61C40;
+}
+
+.file-upload-wrapper {
+    @include dFlex($jc: space-between, $ai: center);
+    width: 90%;
+}
+
+#file-name {
+    margin-left: 5px;
+    width: 85%;
+}
+
+@media (max-height:830px) {
+    section {
+        margin: 20px 10px !important;
+    }
+}
+
+@media (max-width: 750px) {
+    section {
+        padding: 0 30px;
+    }
+    h2 {
+        font-size: 35px;
+    }
+}
+
+@media (max-width: 660px) {
+    section {
+        width: 95%;
+        padding: 0 10px;
+    }
+    h2 {
+        font-size: 35px;
+    }
+    .avatar-list {
+        gap: 8px !important;
+        .avatar-pic {
+            height: 45px;
+        }
+    }
+    .avatar-hint {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 540px) or (max-height:780px) {
+    section {
+        margin: 20px 20px !important;
+        gap: 10px !important;
+    }
+    h2 {
+        font-size: 30px;
+    }
+    h3 {
+        font-size: 20px;
+    }
+    label {
+        font-size: 0.8em;
+        a {
+            font-size: 0.9em;
+        }
+    }
+    .hint {
+        font-size: 0.7em;
+    }
+    .avatar-hint {
+        font-size: 13px;
+    }
+    .avatar-list {
+        grid-template-columns: repeat(5, 1fr);
+    }
+    .avatar-img {
+        height: 100px;
+        width: 100px;
+    }
+    .big {
+        width: 50px;
+    }
+    .small {
+        border-radius: 100%;
+        height: 100px;
+        width: 100px;
+    }
+}
+
+@media (max-width: 445px) or (max-height:960px) {
+    section {
+        margin: 50px 20px;
+    }
+    .info {
+        font-size: 14px;
+    }
+    form {
+        gap: 10px;
+    }
+    .button-field {
+        gap: 5px !important;
+    }
+    h2 {
+        font-size: 26px;
+        margin: 0;
+    }
+    .input-fields {
+        gap: 5px;
+        p {
+            margin: 0;
+            font-size: 14px;
+        }
+    }
+    .info {
+        font-size: 13px;
+    }
+    .go-back-img {
+        height: 30px;
+        width: 30px;
+        background-size: 15px;
+    }
+}
+
+@media (max-width: 390px) or (max-height:610px) {
+    h2 {
+        font-size: 20px !important;
+    }
+    section {
+        margin: 10px 10px !important;
+        gap: 5px !important;
+    }
+    .avatar-list {
+        gap: 5px !important;
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .avatar-img {
+        height: 100px;
+        width: 100px;
+        img {
+            width: 50px;
+        }
+    }
+}
+
+@media (max-width: 306px) {
+    h2 {
+        font-size: 18px !important;
+    }
+    h3 {
+        font-size: 15px;
+    }
+    .avatar-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

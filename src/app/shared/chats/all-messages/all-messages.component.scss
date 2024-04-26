@@ -1,0 +1,51 @@
+@import "../../../../styles.scss";
+
+.allMessages {
+
+    height: auto;
+    width: 100%;
+    @include dFlex($fd:column, $g: 16px, $ai:stretch );
+
+    .dateBlockContainer {
+        width: 100%;
+        @include dFlex($fd: column, $ai: normal, $jc: space-between, $g: 32px);
+        padding-right: 16px;
+        box-sizing: border-box;
+       // margin-top: 32px;
+
+       /*  &:first-child {
+            margin-top: -32px;
+        } */
+
+        .newDate {
+            width: 100%;
+            @include dFlex();
+            margin-top: 32px;
+           
+            .leftBar {
+                height: 1px;
+                flex: 1;
+                background-color: $light_purple;
+            }
+
+            .dateContainer {
+                font-size: 18px;
+                font-weight: 400;
+                line-height: 24px;
+                color: $black;
+                border: 1px solid $light_purple;
+                border-radius: 30px;
+                padding: 0 15px;
+            }
+
+            .rightBar {
+                height: 1px;
+                flex: 1;
+                background-color: $light_purple;
+            }
+        }
+    }
+    .chatEnd{
+        height: 1px;
+    }
+}

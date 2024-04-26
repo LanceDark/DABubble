@@ -1,0 +1,81 @@
+<app-dialog>
+    <section *ngIf="signUpStep == 'createAccount'">
+        <header>
+            <div class="headline-wrapper">
+                <app-go-back-button></app-go-back-button>
+                <div class="headline">
+                    <h2>Konto erstellen</h2>
+                </div>
+            </div>
+        </header>
+        <div class="info">Mit deinem Namen und deiner E-Mail-Adresse hast du dein neues DABubble-Konto.</div>
+        <form #signupForm="ngForm" name="signup-form-step1">
+            <div class="input-fields">
+                <app-inputfield #name="ngModel" name="name" id="name" [(ngModel)]="signUpUserData.name" [imgSize]="'22px'" [classes]="['login']" type="text" imgName="person" [required]="true" placeholder="Name und Nachname"></app-inputfield>
+                <div class="hint">
+                    <span *ngIf="name.invalid && name.touched">Bitte Vor- und Nachnamen eingeben.</span>
+                </div>
+                <app-inputfield #email="ngModel" name="email" id="email" [(ngModel)]="signUpUserData.email" [imgSize]="'16px'" [classes]="['login']" type="email" [required]="true" imgName="mail" placeholder="beispielname@email.com"></app-inputfield>
+                <div class="hint">
+                    <span *ngIf="email.invalid && email.touched">Diese E-Mail-Adresse ist leider ungültig.</span>
+                </div>
+                <app-inputfield #password="ngModel" name="password" [(ngModel)]="signUpUserPassword" [imgSize]="'22px'" [classes]="['login']" type="password" imgName="lock" [required]="true" placeholder="Password"></app-inputfield>
+                <div class="hint">
+                    <span *ngIf="password.invalid && password.touched">Bitte Passwort eingeben.</span>
+                </div>
+            </div>
+            <div class="contact-checkbox">
+                <div>
+                    <label class="custom-checkbox">
+                        <input #checkbox="ngModel" ngModel id="privacy-policy-checkbox" class="checkbox" name="privacy-policy" type="checkbox" required>
+                        <span class="checkmark"></span>
+                    </label>
+                    <label for="privacy-policy-checkbox">
+                    Ich stimme der
+                        <a routerLink="/privacypolicy">Datenschutzerklärung </a> 
+                    zu.
+                    </label>
+                </div>
+                <div class="hint">
+                    <span *ngIf="checkbox.invalid && email.valid && name.valid && password.valid">Bitte Datenschutz akzeptieren.</span>
+                </div>
+            </div>
+            <div class="button-field">
+                <app-button [classes]="['primary','noIcon']" caption="Weiter" [isDisabled]="signupForm.valid? false : true" (clicked)="goChooseAvatar()"></app-button>
+            </div>
+        </form>
+    </section>
+
+
+    <section *ngIf="signUpStep == 'chooseAvatar'">
+        <header>
+            <div class="headline-wrapper">
+                <app-go-back-button [goTo]="'onClick'" (clicked)="goCreateAccount()"></app-go-back-button>
+                <div class="headline">
+                    <h2>Wähle deinen Avatar</h2>
+                </div>
+            </div>
+        </header>
+        <div class="avatar-img"><img [ngClass]="selectedAvatar? 'small' : 'big'" [src]="selectedAvatar || 'assets/img/avatars/default.svg'"></div>
+        <h3 class="user-name">{{signUpUserData.name}}</h3>
+        <span class="avatar-hint">Aus der Liste wählen</span>
+        <div class="avatar-list">
+            <div *ngFor="let img of avatarImgs">
+                <img class="avatar-pic" [src]="img" (click)="selectAvatar(img)">
+            </div>
+        </div>
+        <form #signupForm="ngForm" name="signup-form" (ngSubmit)="onSubmit($event)">
+            <div class="file-upload-wrapper">
+                <input type="file" id="file-input" #fileInput hidden (change)="onFileSelected($event)" />
+                <span class="avatar-hint" id="file-name">eigenes Bild verwenden</span>
+                <app-button id="custom-button" type="button" [classes]="['secondary','noIcon']" caption="Datei hochladen" (clicked)="triggerFileInput()"></app-button>
+            </div>
+            <div class="button-field">
+                <app-button *ngIf="signUpStep == 'chooseAvatar'" type="submit" [isDisabled]="signupForm.valid? false : true" [classes]="['primary','noIcon']" caption="Weiter"></app-button>
+            </div>
+        </form>
+    </section>
+    <div data-aos="fade-left" *ngIf="toastService.showToast" class="toast">
+        <span>{{ toastService.message }}</span>
+    </div>
+</app-dialog>

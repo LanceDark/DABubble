@@ -1,0 +1,32 @@
+<div class="allMessages">
+    <div *ngFor="let message of filterMessages(); let i = index" > 
+        <div class="dateBlockContainer">
+            <ng-container *ngIf="showDateBar(message.timestamp, i, message.message)"> 
+                <div class="newDate">
+                    <div class="leftBar"></div>
+                    <div class="dateContainer">
+                        <span *ngIf="getWeekDay(message.timestamp) === 'Heute'">
+                            {{ getWeekDay(message.timestamp) }}
+                        </span>
+                        <span *ngIf="getWeekDay(message.timestamp) !== 'Heute'">
+                            {{ getWeekDay(message.timestamp) }},
+                        </span>
+                        <span *ngIf="getWeekDay(message.timestamp) !== 'Heute'">
+                            {{ message.timestamp | date : 'dd.MM.YY'}}
+                        </span>
+                    </div>
+                    <div class="rightBar"></div>
+                </div>
+            </ng-container>
+            <div>
+                <app-other-user-message *ngIf="meetContitionsOtherUser(message.userId)" [message]="message" [isThread]="isThread"
+                    (click)="GlobalFunctionsService.openReactionDialog()"></app-other-user-message>
+
+                <app-current-user-message *ngIf="meetContitionsCurrentUser(message.userId)"
+                    [message]="message" [index]="i" [isThread]="isThread"></app-current-user-message>
+
+            </div>
+        </div>
+    </div>
+    <div #scrolldown class="chatEnd"></div>
+</div>
